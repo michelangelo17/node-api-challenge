@@ -22,7 +22,7 @@ router.use(
   allPaths,
   () => {
     throw new Error(
-      `Make sure you're using a valid path: /api/users OR /api/posts`
+      `Make sure you're using a valid path: /api/actions OR /api/projects`
     )
   },
   handle500

@@ -12,6 +12,8 @@ const logger = (req, res, next) => {
   next()
 }
 
+
+//TODO: add check for path, if normal valid, direct user to documentation
 const handle500 = (err, req, res, next) =>
   res.status(500).json({
     message: '500: Internal Server Error',
