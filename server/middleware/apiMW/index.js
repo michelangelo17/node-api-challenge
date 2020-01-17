@@ -12,7 +12,6 @@ const logger = (req, res, next) => {
   next()
 }
 
-
 //TODO: add check for path, if normal valid, direct user to documentation
 const handle500 = (err, req, res, next) =>
   res.status(500).json({
@@ -21,6 +20,13 @@ const handle500 = (err, req, res, next) =>
     error: err.message,
   })
 
+const validateId = db => (req, res, next) =>
+  db
+    .get(req.params.id)
+    .then(obj =>
+      obj !== null ? next() : res.status(400).json({ message: 'invalid id' })
+    )
+
 const middleware = [helmet, logger, json, cors]
 
-module.exports = { middleware, handle500 }
+module.exports = { middleware, handle500, validateId }
