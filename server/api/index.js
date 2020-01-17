@@ -1,4 +1,4 @@
-const { handle500 } = require('../middleware')
+const { handle500 } = require('../middleware/apiMW')
 const router = require('express').Router()
 const actionsRouter = require('./actions')
 const projectsRouter = require('./projects')
