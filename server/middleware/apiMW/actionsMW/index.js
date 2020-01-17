@@ -5,11 +5,7 @@ const validateActionReq = (req, res, next) =>
         ? req.body.description
           ? req.body.description.length <= 128
             ? req.body.notes
-              ? req.body.project_id
-                ? next()
-                : res
-                    .status(400)
-                    .json({ message: 'missing required project_id field' })
+              ? next()
               : res
                   .status(400)
                   .json({ message: 'missing required notes field' })
@@ -19,7 +15,7 @@ const validateActionReq = (req, res, next) =>
           : res
               .status(400)
               .json({ message: 'missing required description field' })
-        : req.body.description || req.body.notes
+        : req.body.description || req.body.notes || req.body.completed
         ? req.body.description
           ? req.body.description.length <= 128
             ? next()
